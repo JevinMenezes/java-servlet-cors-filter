@@ -1,6 +1,7 @@
 package com.thetransactioncompany.cors.autoreconf;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.FileSystems;
@@ -60,7 +61,7 @@ public class CORSConfigurationFileWatcher implements CORSConfigurationWatcher {
 	/**
 	 * The polling scheduler.
 	 */
-	private ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+	private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
 
 
 	/**
@@ -218,6 +219,13 @@ public class CORSConfigurationFileWatcher implements CORSConfigurationWatcher {
 			}
 
 			URL url = filterConfig.getServletContext().getResource(configFile);
+			
+			if (url == null) {
+				File file = new File(configFile);
+				if (file.isFile()) {
+					url = file.toURI().toURL();
+				}
+			}
 
 			if (url == null) {
 				final String msg = "CORS Filter: Configuration file not found: " + configFile;

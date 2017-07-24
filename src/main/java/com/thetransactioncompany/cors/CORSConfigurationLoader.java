@@ -1,6 +1,8 @@
 package com.thetransactioncompany.cors;
 
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
@@ -75,8 +77,9 @@ public class CORSConfigurationLoader {
 	 */
 	public CORSConfigurationLoader(final FilterConfig filterConfig) {
 
-		if (filterConfig == null)
+		if (filterConfig == null) {
 			throw new IllegalArgumentException("The servlet filter configuration must not be null");
+		}
 
 		this.filterConfig = filterConfig;
 	}
@@ -109,16 +112,28 @@ public class CORSConfigurationLoader {
 
 		InputStream is = filterConfig.getServletContext().getResourceAsStream(correctedFilename);
 
-		if (is == null)
+		if (is == null) {
 			is = getClass().getResourceAsStream(correctedFilename);
+		}
+		
+		if (is == null) {
+			File file = new File(correctedFilename);
+			if (file.isFile()) {
+				is = new FileInputStream(file);
+			}
+		}
 
-		if (is == null)
+		if (is == null) {
 			throw new IOException("No such filename: " + correctedFilename);
+		}
 
-		Properties props = new Properties();
-		props.load(is);
-		is.close();
-		return props;
+		try {
+			Properties props = new Properties();
+			props.load(is);
+			return props;
+		} finally {
+			is.close();
+		}
 	}
 	
 	
@@ -129,8 +144,9 @@ public class CORSConfigurationLoader {
 	 */
 	private Environment getEnvironment() {
 
-		if(environment == null)
+		if(environment == null) {
 			this.environment = new SystemProperties();
+		}
 
 		return this.environment;
 	}
