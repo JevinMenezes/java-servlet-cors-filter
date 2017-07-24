@@ -91,13 +91,12 @@ public class CORSConfigurationLoader {
 	 * <p>The following location precedence applies:
 	 *
 	 * <ol>
-	 *     <li>Web application root directory.
-	 *     <li>Classpath.
+	 *     <li>Web application root directory;
+	 *     <li>Classpath;
+	 *     <li>Absolute file path.
 	 * </ol>
 	 *
-	 * @param filename The file name. Should begin with a '/' and is
-	 *                 interpreted as relative to the web application root
-	 *                 directory or relative to the class path. Must not be
+	 * @param filename The file name. Should begin with a '/'. Must not be
 	 *                 {@code null}.
 	 * 
 	 * @return The properties found in the file.
@@ -113,10 +112,12 @@ public class CORSConfigurationLoader {
 		InputStream is = filterConfig.getServletContext().getResourceAsStream(correctedFilename);
 
 		if (is == null) {
+			// Try config file path relative to web app
 			is = getClass().getResourceAsStream(correctedFilename);
 		}
 		
 		if (is == null) {
+			// Fall back to absolute config file path
 			File file = new File(correctedFilename);
 			if (file.isFile()) {
 				is = new FileInputStream(file);
