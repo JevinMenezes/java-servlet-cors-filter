@@ -1,6 +1,6 @@
 Java Cross-Origin Resource Sharing (CORS) Filter
 
-Copyright (c) Vladimir Dzhuvinov, 2010 - 2015
+Copyright (c) Vladimir Dzhuvinov, 2010 - 2017
 
 
 README
@@ -146,5 +146,8 @@ version 2.5 (2015-11-13)
     * Adds host check to ValidatedOrigin constructor (iss #32).
     * Simplifies and improves performance of CORS exception handling.
 
+version 2.6 (2017-07-24)
+    * The CORS Filter configuration file can now also be specified with an
+      absolute path.
 
 [EOF]
