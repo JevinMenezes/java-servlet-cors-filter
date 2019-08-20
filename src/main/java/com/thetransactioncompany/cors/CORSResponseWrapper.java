@@ -26,9 +26,12 @@ public class CORSResponseWrapper extends HttpServletResponseWrapper {
 
 	static {
 		Set<String> headerNames = new HashSet<String>();
+		headerNames.add(HeaderName.ACCESS_CONTROL_ALLOW_HEADERS);
+		headerNames.add(HeaderName.ACCESS_CONTROL_ALLOW_METHODS);
 		headerNames.add(HeaderName.ACCESS_CONTROL_ALLOW_ORIGIN);
 		headerNames.add(HeaderName.ACCESS_CONTROL_ALLOW_CREDENTIALS);
 		headerNames.add(HeaderName.ACCESS_CONTROL_EXPOSE_HEADERS);
+		headerNames.add(HeaderName.ACCESS_CONTROL_MAX_AGE);
 		headerNames.add(HeaderName.VARY);
 		RESPONSE_HEADER_NAMES = Collections.unmodifiableSet(headerNames);
 	}
