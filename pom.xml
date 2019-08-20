@@ -30,22 +30,18 @@
 		</license>
 	</licenses>
 
-	<contributors>
-		<contributor>
+	<developers>
+		<developer>
+			<id>vdzhuvinov</id>
 			<name>Vladimir Dzhuvinov</name>
 			<email>vladimir@dzhuvinov.com</email>
-			<roles>
-				<role>maintainer</role>
-			</roles>
-		</contributor>
-		<contributor>
+		</developer>
+		<developer>
+			<id>jcassee</id>
 			<name>Joost Cassee</name>
 			<email>joost@cassee.net</email>
-			<roles>
-				<role>packager</role>
-			</roles>
-		</contributor>
-	</contributors>
+		</developer>
+	</developers>
 
 	<scm>
 		<connection>scm:git:https://bitbucket.org/thetransactioncompany/cors-filter.git</connection>
