@@ -25,8 +25,11 @@ public class CORSResponseWrapperTest extends TestCase {
 
         final Map<String, String> headers = new HashMap<>();
 		headers.put(HeaderName.ACCESS_CONTROL_ALLOW_CREDENTIALS, "allow-credentials");
+        headers.put(HeaderName.ACCESS_CONTROL_ALLOW_HEADERS, "allow-headers");
+		headers.put(HeaderName.ACCESS_CONTROL_ALLOW_METHODS, "allow-methods");
 		headers.put(HeaderName.ACCESS_CONTROL_ALLOW_ORIGIN, "allow-origin");
 		headers.put(HeaderName.ACCESS_CONTROL_EXPOSE_HEADERS, "expose-headers");
+		headers.put(HeaderName.ACCESS_CONTROL_MAX_AGE, "max-age");
 		headers.put(HeaderName.VARY, "vary");
         headers.put(otherHeaderName, "other-header");
 
@@ -38,8 +41,11 @@ public class CORSResponseWrapperTest extends TestCase {
 
         // THEN
         assertEquals("allow-credentials", headers.get(HeaderName.ACCESS_CONTROL_ALLOW_CREDENTIALS));
+        assertEquals("allow-headers", headers.get(HeaderName.ACCESS_CONTROL_ALLOW_HEADERS));
+        assertEquals("allow-methods", headers.get(HeaderName.ACCESS_CONTROL_ALLOW_METHODS));
         assertEquals("allow-origin", headers.get(HeaderName.ACCESS_CONTROL_ALLOW_ORIGIN));
         assertEquals("expose-headers", headers.get(HeaderName.ACCESS_CONTROL_EXPOSE_HEADERS));
+        assertEquals("max-age", headers.get(HeaderName.ACCESS_CONTROL_MAX_AGE));
         assertEquals("vary", headers.get(HeaderName.VARY));
         assertFalse(headers.containsKey(otherHeaderName));
 
