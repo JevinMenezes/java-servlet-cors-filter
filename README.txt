@@ -150,4 +150,9 @@ version 2.6 (2017-07-24)
     * The CORS Filter configuration file can now also be specified with an
       absolute path.
 
+version 2.8 (2019-08-20)
+    * Adds the following missing headers in CORSResponseWrapper:
+      Access-Control-Allow-Headers, Access-Control-Allow-Methods,
+      Access-Control-Max-Age
+
 [EOF]
