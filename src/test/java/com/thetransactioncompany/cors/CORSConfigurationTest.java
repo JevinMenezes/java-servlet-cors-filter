@@ -87,6 +87,45 @@ public class CORSConfigurationTest extends TestCase {
 
 		assertFalse(c.tagRequests);
         }
+	
+	
+	public void testDefaultConfigWithSystemPropertyOverride() {
+		
+		System.setProperty("cors.allowGenericHttpRequests", "false");
+  
+		Properties p = new Properties();
+		
+		CORSConfiguration c = null;
+		
+		try {
+			c = new CORSConfiguration(p);
+		
+		} catch (CORSConfigurationException e) {
+			fail(e.getMessage());
+		}
+		
+		assertFalse(c.allowGenericHttpRequests);
+		
+		assertTrue(c.allowAnyOrigin);
+		assertTrue(c.isAllowedOrigin(new Origin("http://example.com")));
+		
+		assertTrue(c.isSupportedMethod("GET"));
+		assertTrue(c.isSupportedMethod("POST"));
+		assertTrue(c.isSupportedMethod("HEAD"));
+		assertTrue(c.isSupportedMethod("OPTIONS"));
+		assertFalse(c.isSupportedMethod("DELETE"));
+		assertFalse(c.isSupportedMethod("PUT"));
+		assertFalse(c.isSupportedMethod("TRACE"));
+		
+		assertTrue(c.supportAnyHeader);
+		assertTrue(c.isSupportedHeader("X-Requested-By"));
+		
+		assertEquals(-1, c.maxAge);
+
+		assertFalse(c.tagRequests);
+		
+		System.clearProperty("cors.allowGenericHttpRequests");
+        }
         
         
         public void testPublicConfig() {

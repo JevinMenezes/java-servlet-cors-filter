@@ -1,10 +1,7 @@
 package com.thetransactioncompany.cors;
 
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
 import com.thetransactioncompany.util.PropertyParseException;
 import com.thetransactioncompany.util.PropertyRetriever;
@@ -12,7 +9,8 @@ import com.thetransactioncompany.util.PropertyRetriever;
 
 /**
  * The CORS filter configuration. The fields become immutable (final) after 
- * they are initialised.
+ * they are initialised. Each configuration property can be overridden by a
+ * Java system property bearing the same name.
  *
  * @author Vladimir Dzhuvinov
  * @author Luis Sala
@@ -281,7 +279,7 @@ public class CORSConfiguration {
 		throws CORSConfigurationException {
 	
 		try {
-			PropertyRetriever pr = new PropertyRetriever(props);
+			PropertyRetriever pr = new PropertyRetriever(props, true);
 
 			// Parse the allow generic HTTP requests option
 			allowGenericHttpRequests = pr.getOptBoolean("cors.allowGenericHttpRequests", true);
@@ -289,7 +287,7 @@ public class CORSConfiguration {
 			// Parse the allowed origins list
 			String originSpec = pr.getOptString("cors.allowOrigin", "*").trim();
 			
-			allowedOrigins = new HashSet<ValidatedOrigin>();
+			allowedOrigins = new HashSet<>();
 
 			if (originSpec.equals("*")) {
 
@@ -321,12 +319,8 @@ public class CORSConfiguration {
 
 			String methodSpec = pr.getOptString("cors.supportedMethods", "GET, POST, HEAD, OPTIONS").trim().toUpperCase();
 
-			supportedMethods = new HashSet<String>();
-
-			for (String methodName: parseWords(methodSpec)) {
-
-				supportedMethods.add(methodName);
-			}
+			supportedMethods = new HashSet<>();
+			supportedMethods.addAll(Arrays.asList(parseWords(methodSpec)));
 			
 
 			// Parse the supported headers list
@@ -352,7 +346,7 @@ public class CORSConfiguration {
 
 				String[] headers = parseWords(headerSpec);
 
-				supportedHeaders = new HashSet<String>();
+				supportedHeaders = new HashSet<>();
 
 				for (String header: headers) {
 
@@ -368,7 +362,7 @@ public class CORSConfiguration {
 
 
 			// Parse the exposed headers list
-			exposedHeaders = new HashSet<String>();
+			exposedHeaders = new HashSet<>();
 
 			for (String header: parseWords(pr.getOptString("cors.exposedHeaders", ""))) {
 

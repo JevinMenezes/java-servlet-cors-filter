@@ -1,6 +1,6 @@
 Java Cross-Origin Resource Sharing (CORS) Filter
 
-Copyright (c) Vladimir Dzhuvinov, 2010 - 2017
+Copyright (c) Vladimir Dzhuvinov, 2010 - 2020
 
 
 README
@@ -154,5 +154,10 @@ version 2.8 (2019-08-20)
     * Adds the following missing headers in CORSResponseWrapper:
       Access-Control-Allow-Headers, Access-Control-Allow-Methods,
       Access-Control-Max-Age
+
+version 2.9 (2020-02-25)
+    * Java system properties will override any previously set or default
+      configuration property.
+    * Upgrades to com.thetransactioncompany:java-property-utils:1.13
 
 [EOF]

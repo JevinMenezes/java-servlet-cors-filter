@@ -64,7 +64,7 @@ public class CORSConfigurationFileWatcherTest extends TestCase {
 
 		CORSConfigurationFileWatcher watcher = new CORSConfigurationFileWatcher(filterConfig);
 
-		assertEquals(1l, watcher.getPollIntervalSeconds());
+		assertEquals(1L, watcher.getPollIntervalSeconds());
 
 		watcher.start();
 
@@ -93,7 +93,7 @@ public class CORSConfigurationFileWatcherTest extends TestCase {
 
 		CORSConfigurationFileWatcher watcher = new CORSConfigurationFileWatcher(filterConfig);
 
-		assertEquals(1l, watcher.getPollIntervalSeconds());
+		assertEquals(1L, watcher.getPollIntervalSeconds());
 
 		watcher.start();
 
@@ -106,8 +106,7 @@ public class CORSConfigurationFileWatcherTest extends TestCase {
 
 
 	@Override
-	public void tearDown()
-		throws Exception {
+	public void tearDown() {
 
 		System.clearProperty("cors.configFilePollInterval");
 
