@@ -55,7 +55,7 @@ public class CORSConfigurationLoader {
 	
 		Properties props = new Properties();
 	
-		Enumeration en = config.getInitParameterNames();
+		Enumeration<java.lang.String> en = config.getInitParameterNames();
 		
 		while (en.hasMoreElements()) {
 			

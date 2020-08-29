@@ -3,6 +3,9 @@
 /.project
 /.settings/
 
+# Visual Studio project files
+.vscode
+
 # Maven build directories
 /target/
 
@@ -10,4 +13,5 @@
 /.idea
 /*.iml
 
-
+# Misc
+test.properties

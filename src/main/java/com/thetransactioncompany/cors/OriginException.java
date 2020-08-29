@@ -10,6 +10,11 @@ public class OriginException extends Exception {
 
 
 	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Creates a new origin exception with the specified message.
 	 *
 	 * @param message The message.

@@ -14,6 +14,11 @@ public class CORSException extends Exception {
 
 
 	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * CORS origin denied exception.
 	 */
 	public static final CORSException ORIGIN_DENIED =

@@ -11,8 +11,12 @@ public class CORSConfigurationException extends Exception {
 
 
 	/**
-	 * Creates a new CORS filter configuration exception with the specified
-	 * message.
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Creates a new CORS filter configuration exception with the specified message.
 	 * 
 	 * @param message The exception message.
 	 */

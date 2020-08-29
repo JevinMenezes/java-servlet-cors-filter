@@ -106,7 +106,7 @@ public class ValidatedOriginTest extends TestCase {
 	public void testNullHost() {
 
 		String uri = "http:///path/";
-
+		@SuppressWarnings("unused")
 		ValidatedOrigin o;
 
 		try {

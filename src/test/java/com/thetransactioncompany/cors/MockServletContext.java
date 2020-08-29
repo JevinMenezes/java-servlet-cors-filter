@@ -66,7 +66,7 @@ public class MockServletContext implements ServletContext {
 
 
 	@Override
-	public Set getResourcePaths(String s) {
+	public Set<String> getResourcePaths(String s) {
 		return null;
 	}
 
@@ -109,13 +109,13 @@ public class MockServletContext implements ServletContext {
 
 
 	@Override
-	public Enumeration getServlets() {
+	public Enumeration<Servlet> getServlets() {
 		return null;
 	}
 
 
 	@Override
-	public Enumeration getServletNames() {
+	public Enumeration<String> getServletNames() {
 		return null;
 	}
 
@@ -157,7 +157,7 @@ public class MockServletContext implements ServletContext {
 
 
 	@Override
-	public Enumeration getInitParameterNames() {
+	public Enumeration<String> getInitParameterNames() {
 		return null;
 	}
 
@@ -175,7 +175,7 @@ public class MockServletContext implements ServletContext {
 
 
 	@Override
-	public Enumeration getAttributeNames() {
+	public Enumeration<String> getAttributeNames() {
 		return null;
 	}
 
