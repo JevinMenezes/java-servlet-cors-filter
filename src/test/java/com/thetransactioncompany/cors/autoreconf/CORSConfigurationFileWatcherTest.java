@@ -27,6 +27,7 @@ public class CORSConfigurationFileWatcherTest extends TestCase {
 
 		OutputStream os = new FileOutputStream(new File("test.properties"));
 		properties.store(os, null);
+		os.close();
 	}
 
 
@@ -73,6 +74,7 @@ public class CORSConfigurationFileWatcherTest extends TestCase {
 
 		OutputStream os = new FileOutputStream(new File("test.properties"));
 		properties.store(os, null);
+		os.close();
 
 		Thread.sleep(1100);
 
