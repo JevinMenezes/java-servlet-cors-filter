@@ -12,9 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import com.thetransactioncompany.cors.CORSConfigurationException;
-import com.thetransactioncompany.cors.CORSConfigurationLoader;
-import com.thetransactioncompany.cors.CORSFilter;
+import com.thetransactioncompany.cors.CorsConfigurationException;
+import com.thetransactioncompany.cors.CorsConfigurationLoader;
+import com.thetransactioncompany.cors.CorsFilter;
 
 
 /**
@@ -23,7 +23,7 @@ import com.thetransactioncompany.cors.CORSFilter;
  * be checked the next time the filter is invoked and the poll interval has
  * elapsed since the last check.
  */
-public class AutoReconfigurableCORSFilter implements Filter {
+public class AutoReconfigurableCorsFilter implements Filter {
 
 
 	/**
@@ -35,27 +35,27 @@ public class AutoReconfigurableCORSFilter implements Filter {
 	/**
 	 * The current CORS filter.
 	 */
-	private volatile CORSFilter filter;
+	private volatile CorsFilter filter;
 
 
 	/**
 	 * The configuration file watcher.
 	 */
-	private volatile CORSConfigurationWatcher watcher;
+	private volatile CorsConfigurationWatcher watcher;
 
 
 	/**
 	 * For loading the CORS filter configuration.
 	 */
-	private CORSConfigurationLoader loader;
+	private CorsConfigurationLoader loader;
 
 
 	@Override
 	public void init(final FilterConfig filterConfig)
 		throws ServletException {
 
-		loader = new CORSConfigurationLoader(filterConfig);
-		watcher = new CORSConfigurationFileWatcher(filterConfig);
+		loader = new CorsConfigurationLoader(filterConfig);
+		watcher = new CorsConfigurationFileWatcher(filterConfig);
 		watcher.start();
 	}
 
@@ -65,11 +65,11 @@ public class AutoReconfigurableCORSFilter implements Filter {
 	 *
 	 * @return The current CORS filter.
 	 */
-	public CORSFilter getFilter() {
+	public CorsFilter getFilter() {
 
 		if (watcher.reloadRequired() || filter == null) {
 
-			synchronized (AutoReconfigurableCORSFilter.class) {
+			synchronized (AutoReconfigurableCorsFilter.class) {
 
 				if (watcher.reloadRequired() || filter == null) {
 
@@ -81,13 +81,13 @@ public class AutoReconfigurableCORSFilter implements Filter {
 						}
 
 						final Filter oldFilter = filter;
-						filter = new CORSFilter(loader.load());
+						filter = new CorsFilter(loader.load());
 						if (oldFilter != null) {
 							oldFilter.destroy();
 						}
 						watcher.reset();
 
-					} catch (CORSConfigurationException e) {
+					} catch (CorsConfigurationException e) {
 						LOG.severe("CORS Filter: Failed to instantiate new CORS filter: " + e.getMessage());
 					}
 				}

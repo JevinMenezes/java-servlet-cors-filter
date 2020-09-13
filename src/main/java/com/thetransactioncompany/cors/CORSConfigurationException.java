@@ -7,7 +7,7 @@ package com.thetransactioncompany.cors;
  *
  * @author Vladimir Dzhuvinov
  */
-public class CORSConfigurationException extends Exception {
+public class CorsConfigurationException extends Exception {
 
 
 	/**
@@ -20,7 +20,7 @@ public class CORSConfigurationException extends Exception {
 	 * 
 	 * @param message The exception message.
 	 */
-	public CORSConfigurationException(final String message) {
+	public CorsConfigurationException(final String message) {
 	
 		super(message);
 	}
@@ -33,7 +33,7 @@ public class CORSConfigurationException extends Exception {
 	 * @param message The exception message.
 	 * @param cause   The exception cause.
 	 */
-	public CORSConfigurationException(final String message, final Throwable cause) {
+	public CorsConfigurationException(final String message, final Throwable cause) {
 
 		super(message, cause);
 	}

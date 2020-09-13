@@ -9,25 +9,25 @@ import junit.framework.TestCase;
  * Tests the CORS configuration loader.
  *
  * @author David Bellem
- * @author Vladimir Dzhuvinov
+* @author Vladimir Dzhuvinov
  */
-public class CORSConfigurationLoaderTest extends TestCase {
+public class CorsConfigurationLoaderTest extends TestCase {
 	
 	
 	public void testEnvVarBasedConfig() {
 		
-		CORSConfigurationLoader configLoader = new CORSConfigurationLoader(new MockFilterConfig());
+		CorsConfigurationLoader configLoader = new CorsConfigurationLoader(new MockFilterConfig());
 
 		MockEnvironment mockEnv = new MockEnvironment();
 		mockEnv.setConfigurationFileName("cors-sample.configuration");
 		configLoader.setEnvironment(mockEnv);
 		
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 
 		try {
 			c = configLoader.load();
 
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 
 			fail(e.getMessage());
 		}

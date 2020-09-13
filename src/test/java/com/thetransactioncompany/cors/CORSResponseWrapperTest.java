@@ -16,7 +16,7 @@ import junit.framework.TestCase;
 /**
  * Tests the CORS response wrapper.
  */
-public class CORSResponseWrapperTest extends TestCase {
+public class CorsResponseWrapperTest extends TestCase {
 
     public void testReset() {
 
@@ -36,7 +36,7 @@ public class CORSResponseWrapperTest extends TestCase {
         final MockHttpServletResponse responseMock = new MockHttpServletResponse(headers);
 
         // WHEN
-        final CORSResponseWrapper sut = new CORSResponseWrapper(responseMock);
+        final CorsResponseWrapper sut = new CorsResponseWrapper(responseMock);
         sut.reset();
 
         // THEN

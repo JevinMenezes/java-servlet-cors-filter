@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
  *
  * @author Gervasio Amy
  */
-public class CORSResponseWrapper extends HttpServletResponseWrapper {
+public class CorsResponseWrapper extends HttpServletResponseWrapper {
 
 
 	/**
@@ -43,7 +43,7 @@ public class CORSResponseWrapper extends HttpServletResponseWrapper {
 	 *
 	 * @param response The HTTP servlet response.
 	 */
-	public CORSResponseWrapper(final HttpServletResponse response) {
+	public CorsResponseWrapper(final HttpServletResponse response) {
 
 		super(response);
 	}

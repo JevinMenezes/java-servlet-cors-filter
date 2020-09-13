@@ -11,12 +11,12 @@ import junit.framework.TestCase;
  *
  * @author Vladimir Dzhuvinov
  */
-public class CORSConfigurationTest extends TestCase {
+public class CorsConfigurationTest extends TestCase {
 	
 	
 	public void testParseWordsSpace() {
 	
-		String[] p1 = CORSConfiguration.parseWords("GET POST HEAD");
+		String[] p1 = CorsConfiguration.parseWords("GET POST HEAD");
 		
 		assertEquals(3, p1.length);
 	}
@@ -24,7 +24,7 @@ public class CORSConfigurationTest extends TestCase {
 	
 	public void testParseWordsComma() {
 	
-		String[] p1 = CORSConfiguration.parseWords("GET,POST,HEAD");
+		String[] p1 = CorsConfiguration.parseWords("GET,POST,HEAD");
 		
 		assertEquals(3, p1.length);
 	}
@@ -32,7 +32,7 @@ public class CORSConfigurationTest extends TestCase {
 	
 	public void testParseWordsMixed1() {
 	
-		String[] p1 = CORSConfiguration.parseWords("GET, POST, HEAD");
+		String[] p1 = CorsConfiguration.parseWords("GET, POST, HEAD");
 		
 		assertEquals(3, p1.length);
 	}
@@ -40,7 +40,7 @@ public class CORSConfigurationTest extends TestCase {
 	
 	public void testParseWordsMixed2() {
 	
-		String[] p1 = CORSConfiguration.parseWords("GET , POST , HEAD");
+		String[] p1 = CorsConfiguration.parseWords("GET , POST , HEAD");
 		
 		assertEquals(3, p1.length);
 	}
@@ -48,7 +48,7 @@ public class CORSConfigurationTest extends TestCase {
 	
 	public void testParseWordsEmpty() {
 	
-		String[] p1 = CORSConfiguration.parseWords("");
+		String[] p1 = CorsConfiguration.parseWords("");
 		
 		assertEquals(0, p1.length);
 	}
@@ -58,12 +58,12 @@ public class CORSConfigurationTest extends TestCase {
         
 		Properties p = new Properties();
 		
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 		
 		try {
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 		
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 			fail(e.getMessage());
 		}
 		
@@ -95,12 +95,12 @@ public class CORSConfigurationTest extends TestCase {
   
 		Properties p = new Properties();
 		
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 		
 		try {
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 		
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 			fail(e.getMessage());
 		}
 		
@@ -138,12 +138,12 @@ public class CORSConfigurationTest extends TestCase {
 		p.setProperty("cors.supportsCredentials", "false");
 		p.setProperty("cors.tagRequests", "true");
 		
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 		
 		try {
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 		
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 			fail(e.getMessage());
 		}
 		
@@ -176,12 +176,12 @@ public class CORSConfigurationTest extends TestCase {
 		p.setProperty("cors.supportsCredentials", "false");
 		p.setProperty("cors.tagRequests", "false");
 		
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 		
 		try {
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 		
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 			fail(e.getMessage());
 		}
 		
@@ -210,12 +210,12 @@ public class CORSConfigurationTest extends TestCase {
 		p.setProperty("cors.supportedHeaders", h1 + " " + h2);
 		
 		
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 		
 		try {
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 		
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 			fail(e.getMessage());
 		}
 		
@@ -235,12 +235,12 @@ public class CORSConfigurationTest extends TestCase {
 		p.setProperty("cors.exposedHeaders", h1 + " " + h2);
 		
 		
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 		
 		try {
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 		
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 			fail(e.getMessage());
 		}
 		
@@ -256,12 +256,12 @@ public class CORSConfigurationTest extends TestCase {
 		p.setProperty("cors.supportsCredentials", "true");
 		
 		
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 		
 		try {
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 		
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 			fail(e.getMessage());
 		}
 		
@@ -276,12 +276,12 @@ public class CORSConfigurationTest extends TestCase {
 		p.setProperty("cors.supportsCredentials", "false");
 		
 		
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 		
 		try {
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 		
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 			fail(e.getMessage());
 		}
 		
@@ -296,12 +296,12 @@ public class CORSConfigurationTest extends TestCase {
 		p.setProperty("cors.maxAge", "100");
 		
 		
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 		
 		try {
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 		
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 			fail(e.getMessage());
 		}
 		
@@ -318,13 +318,13 @@ public class CORSConfigurationTest extends TestCase {
 		Properties p = new Properties();
 		p.setProperty("cors.allowOrigin", origin.toString());
 
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 
 		try {
 
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 		
 			fail(e.getMessage());
 		}
@@ -342,12 +342,12 @@ public class CORSConfigurationTest extends TestCase {
 		p.setProperty("cors.allowSubdomains", "true");
 		p.setProperty("cors.allowOrigin", "http://example.com:8080");
 
-		CORSConfiguration c = null;
+		CorsConfiguration c = null;
 
 		try {
-			c = new CORSConfiguration(p);
+			c = new CorsConfiguration(p);
 
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 
 			fail(e.getMessage());
 		}

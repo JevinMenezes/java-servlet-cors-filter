@@ -14,15 +14,15 @@ import junit.framework.TestCase;
  *
  * @author Vladimir Dzhuvinov
  */
-public class CORSRequestHandlerTest extends TestCase {
+public class CorsRequestHandlerTest extends TestCase {
 
 
 	public void testActualRequestWithDefaultConfiguration()
 		throws Exception {
 
-		CORSConfiguration config = new CORSConfiguration(new Properties());
+		CorsConfiguration config = new CorsConfiguration(new Properties());
 
-		CORSRequestHandler handler = new CORSRequestHandler(config);
+		CorsRequestHandler handler = new CorsRequestHandler(config);
 
 		MockServletRequest request = new MockServletRequest();
 		request.setHeader("Origin", "http://example.com");
@@ -45,9 +45,9 @@ public class CORSRequestHandlerTest extends TestCase {
 
 		Properties props = new Properties();
 		props.setProperty("cors.supportsCredentials", "false");
-		CORSConfiguration config = new CORSConfiguration(props);
+		CorsConfiguration config = new CorsConfiguration(props);
 
-		CORSRequestHandler handler = new CORSRequestHandler(config);
+		CorsRequestHandler handler = new CorsRequestHandler(config);
 
 		MockServletRequest request = new MockServletRequest();
 		request.setHeader("Origin", "http://example.com");
@@ -70,9 +70,9 @@ public class CORSRequestHandlerTest extends TestCase {
 		Properties props = new Properties();
 		props.put("cors.exposedHeaders", "X-Custom");
 
-		CORSConfiguration config = new CORSConfiguration(props);
+		CorsConfiguration config = new CorsConfiguration(props);
 
-		CORSRequestHandler handler = new CORSRequestHandler(config);
+		CorsRequestHandler handler = new CorsRequestHandler(config);
 
 		MockServletRequest request = new MockServletRequest();
 		request.setHeader("Origin", "http://example.com");
@@ -98,9 +98,9 @@ public class CORSRequestHandlerTest extends TestCase {
 		Properties props = new Properties();
 		props.put("cors.allowOrigin", "http://example.com");
 
-		CORSConfiguration config = new CORSConfiguration(props);
+		CorsConfiguration config = new CorsConfiguration(props);
 
-		CORSRequestHandler handler = new CORSRequestHandler(config);
+		CorsRequestHandler handler = new CorsRequestHandler(config);
 
 		MockServletRequest request = new MockServletRequest();
 		request.setHeader("Origin", "http://other.com");
@@ -110,7 +110,7 @@ public class CORSRequestHandlerTest extends TestCase {
 		try {
 			handler.handleActualRequest(request, response);
 			fail();
-		} catch (CORSException e) {
+		} catch (CorsException e) {
 			// ok
 			assertEquals("CORS origin denied", e.getMessage());
 			assertEquals(403, e.getHTTPStatusCode());
@@ -124,9 +124,9 @@ public class CORSRequestHandlerTest extends TestCase {
 		Properties props = new Properties();
 		props.put("cors.supportedMethods", "GET POST");
 
-		CORSConfiguration config = new CORSConfiguration(props);
+		CorsConfiguration config = new CorsConfiguration(props);
 
-		CORSRequestHandler handler = new CORSRequestHandler(config);
+		CorsRequestHandler handler = new CorsRequestHandler(config);
 
 		MockServletRequest request = new MockServletRequest();
 		request.setHeader("Origin", "http://example.com");
@@ -137,7 +137,7 @@ public class CORSRequestHandlerTest extends TestCase {
 		try {
 			handler.handleActualRequest(request, response);
 			fail();
-		} catch (CORSException e) {
+		} catch (CorsException e) {
 			// ok
 			assertEquals("Unsupported HTTP method", e.getMessage());
 			assertEquals(405, e.getHTTPStatusCode());
@@ -148,9 +148,9 @@ public class CORSRequestHandlerTest extends TestCase {
 	public void testPreflightRequestWithDefaultConfiguration()
 		throws Exception {
 
-		CORSConfiguration config = new CORSConfiguration(new Properties());
+		CorsConfiguration config = new CorsConfiguration(new Properties());
 
-		CORSRequestHandler handler = new CORSRequestHandler(config);
+		CorsRequestHandler handler = new CorsRequestHandler(config);
 
 		MockServletRequest request = new MockServletRequest();
 		request.setHeader("Origin", "http://example.com");
@@ -182,9 +182,9 @@ public class CORSRequestHandlerTest extends TestCase {
 
 		Properties props = new Properties();
 		props.setProperty("cors.supportsCredentials", "false");
-		CORSConfiguration config = new CORSConfiguration(props);
+		CorsConfiguration config = new CorsConfiguration(props);
 
-		CORSRequestHandler handler = new CORSRequestHandler(config);
+		CorsRequestHandler handler = new CorsRequestHandler(config);
 
 		MockServletRequest request = new MockServletRequest();
 		request.setHeader("Origin", "http://example.com");
@@ -216,9 +216,9 @@ public class CORSRequestHandlerTest extends TestCase {
 		Properties props = new Properties();
 		props.setProperty("cors.supportedHeaders", "*");
 
-		CORSConfiguration config = new CORSConfiguration(props);
+		CorsConfiguration config = new CorsConfiguration(props);
 
-		CORSRequestHandler handler = new CORSRequestHandler(config);
+		CorsRequestHandler handler = new CorsRequestHandler(config);
 
 		MockServletRequest request = new MockServletRequest();
 		request.setHeader("Origin", "http://example.com");

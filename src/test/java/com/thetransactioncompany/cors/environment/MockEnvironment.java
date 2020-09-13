@@ -3,7 +3,7 @@ package com.thetransactioncompany.cors.environment;
 
 import java.util.Properties;
 
-import com.thetransactioncompany.cors.CORSConfigurationLoader;
+import com.thetransactioncompany.cors.CorsConfigurationLoader;
 
 
 /**
@@ -21,7 +21,7 @@ public class MockEnvironment implements Environment {
 	@Override
 	public String getProperty(String name) {
 
-		if(name.equalsIgnoreCase(CORSConfigurationLoader.CONFIG_FILE_PARAM_NAME))
+		if(name.equalsIgnoreCase(CorsConfigurationLoader.CONFIG_FILE_PARAM_NAME))
 			return configurationFileName;
 		
 		return null;

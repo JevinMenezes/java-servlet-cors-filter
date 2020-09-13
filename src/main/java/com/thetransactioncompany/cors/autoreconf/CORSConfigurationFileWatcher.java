@@ -21,7 +21,7 @@ import javax.servlet.FilterConfig;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-import com.thetransactioncompany.cors.CORSConfigurationLoader;
+import com.thetransactioncompany.cors.CorsConfigurationLoader;
 import com.thetransactioncompany.cors.environment.Environment;
 import com.thetransactioncompany.cors.environment.SystemProperties;
 
@@ -36,7 +36,7 @@ import com.thetransactioncompany.cors.environment.SystemProperties;
  *
  * @author Aleksey Zvolinsky
  */
-public class CORSConfigurationFileWatcher implements CORSConfigurationWatcher {
+public class CorsConfigurationFileWatcher implements CorsConfigurationWatcher {
 
 
 	/**
@@ -101,7 +101,7 @@ public class CORSConfigurationFileWatcher implements CORSConfigurationWatcher {
 	 * @param filterConfig The filter configuration. Must not be
 	 *                     {@code null}.
 	 */
-	public CORSConfigurationFileWatcher(final FilterConfig filterConfig) {
+	public CorsConfigurationFileWatcher(final FilterConfig filterConfig) {
 
 		if (filterConfig == null) {
 			throw new IllegalArgumentException("The servlet filter configuration must not be null");
@@ -199,7 +199,7 @@ public class CORSConfigurationFileWatcher implements CORSConfigurationWatcher {
 	/**
 	 * Determines the CORS configuration file directory.
 	 *
-	 * @see CORSConfigurationLoader#load()
+	 * @see CorsConfigurationLoader#load()
 	 *
 	 * @return The path to the directory where the configuration file is
 	 *         located.
@@ -207,11 +207,11 @@ public class CORSConfigurationFileWatcher implements CORSConfigurationWatcher {
 	private Path determineConfigDir() {
 		try {
 			// Try to get the config file from the sys environment
-			configFile = getEnvironment().getProperty(CORSConfigurationLoader.CONFIG_FILE_PARAM_NAME);
+			configFile = getEnvironment().getProperty(CorsConfigurationLoader.CONFIG_FILE_PARAM_NAME);
 
 			if (configFile == null || configFile.trim().isEmpty()) {
 				// Try to get the config file from the filter init param
-				configFile = filterConfig.getInitParameter(CORSConfigurationLoader.CONFIG_FILE_PARAM_NAME);
+				configFile = filterConfig.getInitParameter(CorsConfigurationLoader.CONFIG_FILE_PARAM_NAME);
 			}
 
 			if (configFile == null) {

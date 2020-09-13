@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author Vladimir Dzhuvinov
  * @author Brandon Murray
  */
-public enum CORSRequestType {
+public enum CorsRequestType {
 
 	
 	/**
@@ -38,7 +38,7 @@ public enum CORSRequestType {
 	 *
 	 * @return The CORS request type.
 	 */
-	public static CORSRequestType detect(final HttpServletRequest request) {
+	public static CorsRequestType detect(final HttpServletRequest request) {
 
 		if (request.getHeader(HeaderName.ORIGIN) == null) {
 

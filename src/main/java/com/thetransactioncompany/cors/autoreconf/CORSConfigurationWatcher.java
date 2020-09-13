@@ -3,12 +3,12 @@ package com.thetransactioncompany.cors.autoreconf;
 
 /**
  * Interface for watching a
- * {@link com.thetransactioncompany.cors.CORSConfiguration CORS filter
+ * {@link com.thetransactioncompany.cors.CorsConfiguration CORS filter
  * configuration} file for changes.
  *
  * @author Aleksey Zvolinsky
  */
-public interface CORSConfigurationWatcher {
+public interface CorsConfigurationWatcher {
 
 
 	/**

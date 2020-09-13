@@ -16,7 +16,7 @@ import com.thetransactioncompany.util.PropertyRetriever;
  * @author Luis Sala
  * @author Jared Ottley
  */
-public class CORSConfiguration {
+public class CorsConfiguration {
 	
 	
 	/**
@@ -273,10 +273,10 @@ public class CORSConfiguration {
 	 *
 	 * @param props The properties. Must not be {@code null}.
 	 *
-	 * @throws CORSConfigurationException On a invalid property.
+	 * @throws CorsConfigurationException On a invalid property.
 	 */
-	public CORSConfiguration(final Properties props)
-		throws CORSConfigurationException {
+	public CorsConfiguration(final Properties props)
+		throws CorsConfigurationException {
 	
 		try {
 			PropertyRetriever pr = new PropertyRetriever(props, true);
@@ -392,7 +392,7 @@ public class CORSConfiguration {
 			// to improve stack trace clarity (config exceptions
 			// are often dumped to the web client screen)
 			
-			throw new CORSConfigurationException(e.getMessage());
+			throw new CorsConfigurationException(e.getMessage());
 		}
 	}
 }

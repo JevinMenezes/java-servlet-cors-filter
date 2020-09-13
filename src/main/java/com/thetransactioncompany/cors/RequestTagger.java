@@ -36,7 +36,7 @@ public final class RequestTagger {
 	 * @param type    The detected request type. Must not be {@code null}.
 	 */
 	public static void tag(final HttpServletRequest request,
-			       final CORSRequestType type) {
+			       final CorsRequestType type) {
 
 		switch (type) {
 

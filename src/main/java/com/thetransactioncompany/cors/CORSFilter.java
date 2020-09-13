@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * <p>The filter intercepts incoming HTTP requests and applies the CORS
  * policy as specified by the filter init parameters. The actual CORS
- * request is processed by the {@link CORSRequestHandler} class.
+ * request is processed by the {@link CorsRequestHandler} class.
  *
  * <p>Supported configuration parameters:
  *
@@ -41,26 +41,26 @@ import javax.servlet.http.HttpServletResponse;
  * @author Gervasio Amy
  * @author Mike Holdsworth
  */
-public class CORSFilter implements Filter {
+public class CorsFilter implements Filter {
 
 
 	/**
 	 * The CORS filer configuration.
 	 */
-	private CORSConfiguration config;
+	private CorsConfiguration config;
 
 
 	/**
 	 * Encapsulates the CORS request handling logic.
 	 */
-	private CORSRequestHandler handler;
+	private CorsRequestHandler handler;
 
 
 	/**
 	 * Creates a new uninitialised CORS filter. Must be then initialised
 	 * with {@link #setConfiguration} or {@link #init}.
 	 */
-	public CORSFilter() {
+	public CorsFilter() {
 
 		super();
 	}
@@ -76,7 +76,7 @@ public class CORSFilter implements Filter {
 	 * @param config The cross-origin access policy. Must not be
 	 *               {@code null}.
 	 */
-	public CORSFilter(final CORSConfiguration config) {
+	public CorsFilter(final CorsConfiguration config) {
 
 		setConfiguration(config);
 	}
@@ -88,10 +88,10 @@ public class CORSFilter implements Filter {
 	 * @param config The cross-origin access policy. Must not be
 	 *               {@code null}.
 	 */
-	public void setConfiguration(final CORSConfiguration config) {
+	public void setConfiguration(final CorsConfiguration config) {
 
 		this.config = config;
-		handler = new CORSRequestHandler(config);
+		handler = new CorsRequestHandler(config);
 	}
 
 
@@ -101,7 +101,7 @@ public class CORSFilter implements Filter {
 	 * @return The cross-origin access policy, {@code null} if the filter
 	 *         is not initialised.
 	 */
-	public CORSConfiguration getConfiguration() {
+	public CorsConfiguration getConfiguration() {
 
 		return config;
 	}
@@ -120,12 +120,12 @@ public class CORSFilter implements Filter {
 	public void init(final FilterConfig filterConfig)
 		throws ServletException {
 
-		CORSConfigurationLoader configLoader = new CORSConfigurationLoader(filterConfig);
+		CorsConfigurationLoader configLoader = new CorsConfigurationLoader(filterConfig);
 
 		try {
 			setConfiguration(configLoader.load());
 
-		} catch (CORSConfigurationException e) {
+		} catch (CorsConfigurationException e) {
 
 			throw new ServletException(e.getMessage(), e);
 		}
@@ -148,7 +148,7 @@ public class CORSFilter implements Filter {
 	 * @throws IOException      On a I/O exception.
 	 * @throws ServletException On a general request processing exception.
 	 */
-	private void printMessage(final CORSException corsException,
+	private void printMessage(final CorsException corsException,
 				  final HttpServletResponse response)
 		throws IOException, ServletException {
 
@@ -180,24 +180,24 @@ public class CORSFilter implements Filter {
 		              final FilterChain chain)
 		throws IOException, ServletException {
 
-		CORSRequestType type = CORSRequestType.detect(request);
+			CorsRequestType type = CorsRequestType.detect(request);
 
 		// Tag if configured
 		if (config.tagRequests)
 			RequestTagger.tag(request, type);
 
 		try {
-			if (type.equals(CORSRequestType.ACTUAL)) {
+			if (type.equals(CorsRequestType.ACTUAL)) {
 
 				// Simple / actual CORS request
 				handler.handleActualRequest(request, response);
 
 				// Preserve CORS response headers on reset()
-				CORSResponseWrapper responseWrapper = new CORSResponseWrapper(response);
+				CorsResponseWrapper responseWrapper = new CorsResponseWrapper(response);
 
 				chain.doFilter(request, responseWrapper);
 
-			} else if (type.equals(CORSRequestType.PREFLIGHT)) {
+			} else if (type.equals(CorsRequestType.PREFLIGHT)) {
 
 				// Preflight CORS request, handle but don't pass
 				// further down the chain
@@ -211,9 +211,9 @@ public class CORSFilter implements Filter {
 			} else {
 
 				// Generic HTTP requests denied
-				printMessage(CORSException.GENERIC_HTTP_NOT_ALLOWED, response);
+				printMessage(CorsException.GENERIC_HTTP_NOT_ALLOWED, response);
 			}
-		} catch (CORSException e) {
+		} catch (CorsException e) {
 
 			printMessage(e, response);
 		}

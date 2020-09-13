@@ -20,7 +20,7 @@ import com.thetransactioncompany.cors.environment.SystemProperties;
  * @author Vladimir Dzhuvinov
  * @author David Bellem
  */
-public class CORSConfigurationLoader {
+public class CorsConfigurationLoader {
 
 
 	/**
@@ -75,7 +75,7 @@ public class CORSConfigurationLoader {
 	 * @param filterConfig The servlet filter configuration. Must not be
 	 *                     {@code null}.
 	 */
-	public CORSConfigurationLoader(final FilterConfig filterConfig) {
+	public CorsConfigurationLoader(final FilterConfig filterConfig) {
 
 		if (filterConfig == null) {
 			throw new IllegalArgumentException("The servlet filter configuration must not be null");
@@ -190,13 +190,13 @@ public class CORSConfigurationLoader {
 	 *
 	 * @return The loaded CORS filter configuration.
 	 *
-	 * @throws CORSConfigurationException If the configuration file
+	 * @throws CorsConfigurationException If the configuration file
 	 *                                    couldn't be loaded or parsing of
 	 *                                    one or more properties failed due
 	 *                                    to an illegal value.
 	 */
-	public CORSConfiguration load()
-		throws CORSConfigurationException {
+	public CorsConfiguration load()
+		throws CorsConfigurationException {
 
 		Properties props;
 
@@ -221,9 +221,9 @@ public class CORSConfigurationLoader {
 
 		} catch(IOException e) {
 
-			throw new CORSConfigurationException(e.getMessage(), e);
+			throw new CorsConfigurationException(e.getMessage(), e);
 		}
 
-		return new CORSConfiguration(props);
+		return new CorsConfiguration(props);
 	}
 }

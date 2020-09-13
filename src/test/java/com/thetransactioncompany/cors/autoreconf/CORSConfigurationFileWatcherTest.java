@@ -8,14 +8,14 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 
-import com.thetransactioncompany.cors.CORSConfigurationLoader;
+import com.thetransactioncompany.cors.CorsConfigurationLoader;
 import com.thetransactioncompany.cors.MockFilterConfig;
 
 
 /**
  * Tests the CORS configuration file watcher.
  */
-public class CORSConfigurationFileWatcherTest extends TestCase {
+public class CorsConfigurationFileWatcherTest extends TestCase {
 
 
 	@Override
@@ -33,24 +33,24 @@ public class CORSConfigurationFileWatcherTest extends TestCase {
 
 	public void testWatchParameterName() {
 
-		assertEquals("cors.configFilePollInterval", CORSConfigurationFileWatcher.POLL_INTERVAL_PARAM_NAME);
+		assertEquals("cors.configFilePollInterval", CorsConfigurationFileWatcher.POLL_INTERVAL_PARAM_NAME);
 	}
 
 
 	public void testDefaultWatchIntervalConstant() {
 
-		assertEquals(20, CORSConfigurationFileWatcher.DEFAULT_POLL_INTERVAL_SECONDS);
+		assertEquals(20, CorsConfigurationFileWatcher.DEFAULT_POLL_INTERVAL_SECONDS);
 	}
 
 
 	public void testDefaultWatchInterval() {
 
 		MockFilterConfig filterConfig = new MockFilterConfig();
-		filterConfig.setInitParameter(CORSConfigurationLoader.CONFIG_FILE_PARAM_NAME, "test.properties");
+		filterConfig.setInitParameter(CorsConfigurationLoader.CONFIG_FILE_PARAM_NAME, "test.properties");
 
-		CORSConfigurationFileWatcher watcher = new CORSConfigurationFileWatcher(filterConfig);
+		CorsConfigurationFileWatcher watcher = new CorsConfigurationFileWatcher(filterConfig);
 
-		assertEquals(CORSConfigurationFileWatcher.DEFAULT_POLL_INTERVAL_SECONDS, watcher.getPollIntervalSeconds());
+		assertEquals(CorsConfigurationFileWatcher.DEFAULT_POLL_INTERVAL_SECONDS, watcher.getPollIntervalSeconds());
 	}
 
 
@@ -58,12 +58,12 @@ public class CORSConfigurationFileWatcherTest extends TestCase {
 		throws Exception {
 
 		// Override watch interval
-		System.setProperty(CORSConfigurationFileWatcher.POLL_INTERVAL_PARAM_NAME, "1");
+		System.setProperty(CorsConfigurationFileWatcher.POLL_INTERVAL_PARAM_NAME, "1");
 
 		MockFilterConfig filterConfig = new MockFilterConfig();
-		filterConfig.setInitParameter(CORSConfigurationLoader.CONFIG_FILE_PARAM_NAME, "test.properties");
+		filterConfig.setInitParameter(CorsConfigurationLoader.CONFIG_FILE_PARAM_NAME, "test.properties");
 
-		CORSConfigurationFileWatcher watcher = new CORSConfigurationFileWatcher(filterConfig);
+		CorsConfigurationFileWatcher watcher = new CorsConfigurationFileWatcher(filterConfig);
 
 		assertEquals(1L, watcher.getPollIntervalSeconds());
 
@@ -88,12 +88,12 @@ public class CORSConfigurationFileWatcherTest extends TestCase {
 		throws Exception {
 
 		// Override watch interval
-		System.setProperty(CORSConfigurationFileWatcher.POLL_INTERVAL_PARAM_NAME, "1");
+		System.setProperty(CorsConfigurationFileWatcher.POLL_INTERVAL_PARAM_NAME, "1");
 
 		MockFilterConfig filterConfig = new MockFilterConfig();
-		filterConfig.setInitParameter(CORSConfigurationLoader.CONFIG_FILE_PARAM_NAME, "test.properties");
+		filterConfig.setInitParameter(CorsConfigurationLoader.CONFIG_FILE_PARAM_NAME, "test.properties");
 
-		CORSConfigurationFileWatcher watcher = new CORSConfigurationFileWatcher(filterConfig);
+		CorsConfigurationFileWatcher watcher = new CorsConfigurationFileWatcher(filterConfig);
 
 		assertEquals(1L, watcher.getPollIntervalSeconds());
 
