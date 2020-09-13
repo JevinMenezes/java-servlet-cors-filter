@@ -1,9 +1,5 @@
-Java Cross-Origin Resource Sharing (CORS) Filter
+Java Cross-Origin Resource Sharing (CORS) Filter [![Build Status](https://travis-ci.org/JevinMenezes/java-servlet-cors-filter.svg?branch=master)](https://travis-ci.org/JevinMenezes/java-servlet-cors-filter)
 
-Copyright (c) Vladimir Dzhuvinov, 2010 - 2020
-
-
-README
 
 This package provides a Java servlet filter that implements the Cross-Origin 
 Resource Sharing (CORS) mechanism for allowing cross-domain HTTP requests from 
